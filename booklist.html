@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>ionic-app</title>
+    <link rel="stylesheet" href="./assets/lib/ionic/ionic.css">
+</head>
+
+<body>
+    <div ng-app="app" ng-controller="mainCtrl">
+
+
+        <ion-side-menus>
+
+            <!-- Left menu -->
+            <ion-side-menu side="left">
+                <div class="bar bar-header bar-light">
+                    <h2 class="title">图书分类</h2>
+                </div>
+                <ion-list>
+                    <div style="margin-top:43px">
+                        <ion-item><button menu-close class="button button-stable button-clear" ng-click="changeBookType('ertong')">儿童</button></ion-item>
+                        <ion-item><button menu-close class="button button-stable button-clear" ng-click="changeBookType('lishi')">历史</button></ion-item>
+                        <ion-item><button menu-close class="button button-stable button-clear" ng-click="changeBookType('dongman')">动漫</button></ion-item>
+                        <ion-item><button menu-close class="button button-stable button-clear" ng-click="changeBookType('qingchunwenxue')">青春文学</button></ion-item>
+                    </div>
+                </ion-list>
+            </ion-side-menu>
+
+            <ion-side-menu-content>
+                <!-- Main content, usually <ion-nav-view> -->
+
+
+
+
+                <!--<div class="bar bar-footer bar-balanced">
+                    <button class="button button-clear" ng-click="doClick()">Left</button>
+                    <div class="title">Title</div>
+                    <button ng-click="toggleSideMenu()" class="button button-clear">Right</button>
+                </div>-->
+
+                <ion-tabs class="tabs-calm  tabs-icon-top">
+
+                    <ion-tab title="Home" icon-on="ion-ios-filing" icon-off="ion-ios-filing-outline">
+                        <!-- Tab 1 content -->
+                        <div class="bar bar-calm bar-header">
+                            <h1 class="title">我的主页</h1>
+                        </div>
+                    </ion-tab>
+
+                    <ion-tab title="List" icon-on="ion-star" icon-off="ion-star">
+                        <div class="bar bar-calm bar-header">
+                            <button class="button icon ion-navicon" ng-click="toggleSideMenuLeft()"></button>
+                            <h1 class="title">图书列表</h1>
+                        </div>
+                        <!-- Tab 2 content -->
+                        <ion-content class="has-header">
+                            <div class="list">
+                                <a class="item item-thumbnail-left" href="#" ng-repeat="item in books">
+                                    <img src="{{item.img}}">
+                                    <h2>{{item.title}}</h2>
+                                    <p>{{item.author}}</p>
+                                </a>
+                            </div>
+                            <!--
+                                distance移动距离
+                                on-infinite 超出距离触发
+                            -->
+                            <ion-infinite-scroll
+                            on-infinite="loadMore()"
+                            distance="1%">
+                            </ion-infinite-scroll>
+                        </ion-content>
+                    </ion-tab>
+
+                    <ion-tab title="Settings" icon-on="ion-ios-gear" icon-off="ion-ios-gear-outline">
+                        <!-- Tab 3 content -->
+                        <div class="bar bar-calm bar-header">
+                            <h1 class="title">个人中心</h1>
+                        </div>
+                    </ion-tab>
+
+                </ion-tabs>
+
+                <!--<div class="tabs tabs-icon-top">
+                    <a class="tab-item">
+                        <i class="icon ion-home royal"></i> Home
+                    </a>
+                    <a class="tab-item">
+                        <i class="icon ion-star"></i> Favorites
+                    </a>
+                    <a class="tab-item">
+                        <i class="icon ion-gear-a"></i> Settings
+                    </a>
+                </div>-->
+
+
+            </ion-side-menu-content>
+
+            <!-- Right menu -->
+            <ion-side-menu side="right">
+
+                <h1>我是侧边栏的内容</h1>
+            </ion-side-menu>
+
+        </ion-side-menus>
+
+
+
+    </div>
+    <script src="./assets/lib/ionic/ionic.bundle.js"></script>
+    <script src="./assets/app.js"></script>
+</body>
+
+</html>
